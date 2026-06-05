@@ -1,3 +1,7 @@
 venv/
 config.py
 __pycache__/
+*.log          # Ignora todos los archivos .log (incluyendo access.log)
+*.txt          # Opcional: ignora informes generados
+.DS_Store      # Archivos de macOS (si usas Mac)
+*.pyc          # Archivos compilados
