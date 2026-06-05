@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><title>ThreatPulse Report</title></head>
+<body>
+<h1>ThreatPulse - Informe de Amenazas</h1>
+<p>Generado: {{ date }}</p>
+<table border="1">
+<tr><th>IP</th><th>Peticiones</th><th>AbuseScore</th></tr>
+{% for item in data %}
+<tr>
+  <td>{{ item.IP }}</td>
+  <td>{{ item.Peticiones }}</td>
+  <td style="color: {% if item.AbuseScore > 50 %}red{% else %}green{% endif %};">{{ item.AbuseScore }}%</td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>

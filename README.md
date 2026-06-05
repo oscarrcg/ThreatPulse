@@ -26,7 +26,7 @@ Analiza logs de servidores web (Apache/Nginx) para:
 | 🌐 Inteligencia externa | Integración con AbuseIPDB para reputación de IPs |
 | 📊 Informes priorizados | Ordenamiento por Abuse Score (mayor riesgo primero) |
 | 🧪 Prueba integrada | Verifica API con IPs maliciosas conocidas |
-| 📁 Salida portable | Genera informe_amenazas.txt listo para revisión |
+| 📁 Salida portable | Genera informe_amenazas.txt listo para revisión. También se genera informe_amenazas.html con tabla coloreada (verde = bajo riesgo, rojo = alto riesgo) para presentar resultados de forma visual. |
 
 ## 📈 Ejemplo de salida
 
@@ -85,7 +85,7 @@ venv\Scripts\activate  # En Windows
 
 ### 3. Instala dependencias
 ```bash
-pip install requests
+pip install requests jinja2
 ```
 
 ### 4. Configura tu API key
@@ -126,13 +126,16 @@ maxAgeInDays = 365       # Días hacia atrás en AbuseIPDB
 
 ```
 ThreatPulse/
-├── detector.py          # Script principal
-├── test_api.py          # Prueba de API independiente
-├── config.py            # Configuración (NO incluido en repo)
-├── requirements.txt     # Dependencias
-├── access.log           # Logs a analizar (debes agregarlo)
-├── informe_amenazas.txt # Informe generado (autocreado)
-└── README.md            # Este archivo
+├── detector.py              # Script principal
+├── test_api.py              # Prueba de API independiente
+├── config.py                # Configuración (NO incluido en repo)
+├── template.html            # Plantilla Jinja2 para informe HTML
+├── requirements.txt         # Dependencias
+├── access.log               # Logs a analizar (debes agregarlo)
+├── informe_amenazas.txt     # Informe texto generado (autocreado)
+├── informe_amenazas.html    # Informe visual generado (autocreado)
+├── .gitignore               # Excluye config.py del repositorio
+└── README.md                # Este archivo
 ```
 
 ## 🧪 Prueba rápida de API
